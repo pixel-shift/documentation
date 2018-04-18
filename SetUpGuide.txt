@@ -1,0 +1,11 @@
+set up Guide
+
+1) Install sphinx-build and pip
+
+apt-get install python3-sphinx
+apt-get install python-pip
+
+
+2) Install rtd themes
+
+pip install sphinx_rtd_theme

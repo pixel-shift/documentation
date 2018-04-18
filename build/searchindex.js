@@ -1,0 +1,1 @@
+Search.setIndex({envversion:47,filenames:["index","usage/installation"],objects:{},objnames:{},objtypes:{},terms:{content:[],guid:[],index:[],instal:[],modul:[],page:[],search:[]},titles:["Pixelshift Documentation","Installation Guide"],titleterms:{content:0,document:0,guid:1,indic:[],instal:1,pixelshift:0,tabl:[]}})
