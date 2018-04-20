@@ -32,6 +32,7 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.ifconfig',
+    'sphinx.ext.extlinks'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -141,6 +142,15 @@ html_context = {
 "theme_vcs_pageview_mode" : "blob",
 "conf_py_path" : "master/source/"
 }
+isProduction = os.getenv('IS_PRODUCTION', False)
+
+if isProduction == True:
+    extlinks = {'webroot': 
+        ('https://www.pixelshift.io/%s', '')}
+else:
+    extlinks = {'webroot': 
+        ('http://localhost:5000/%s', '')}
+
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
