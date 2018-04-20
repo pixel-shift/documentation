@@ -10,7 +10,7 @@ In order for us to process images stored in AWS we need programmatic access to y
 All we then require are the access keys for the IAM user.
 
 
-Creating a New IAM User
+Create a New IAM User
 =======================
 
 An IAM User can be easily created via the AWS Console (Services/IAM/Users), as shown in this section. It is also possible to set up an IAM User via the AWS CLI, but this is not covered here - please refer to the `official documentation <https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html>`_ for details. 
@@ -21,6 +21,7 @@ An IAM User can be easily created via the AWS Console (Services/IAM/Users), as s
 4. Enter a **User name** - e.g. 'iam_pixelshift'
 5. Select 'Programmatic access' as the **Access type** 
 6. Click **Next**
-7. Continue past the 'Set permissions for <username>' screen without selecting anything(permissions will be set shortly).
+7. Continue past the 'Set permissions for <username>' screen without selecting anything (permissions will be set shortly).
 8. On the 'Review' screen, ignore the permssions warning and click **Create User**
-9. You should see the 'Success' page with your new IAM User, with access to the *Access Key Id* and *Secret Access Key* **Important:** This is the only time you can view both keys (though you can re-generate the secret if you need to). :webroot:`dashboard` Either copy and paste them directly into your :webroot:`dashboard here <dashboard/setup>` or store them somewhere safe until later.
+9. You should see the 'Success' page with your new IAM User, with access to the *Access Key Id* and *Secret Access Key*
+    **Important:** This is the only time you can view both keys (though you can re-generate the secret if you need to). Either copy and paste them directly into your :webroot:`dashboard here <DashBoard/SetUp>` or store them somewhere safe until later.

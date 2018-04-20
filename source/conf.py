@@ -142,14 +142,9 @@ html_context = {
 "theme_vcs_pageview_mode" : "blob",
 "conf_py_path" : "master/source/"
 }
-isProduction = os.getenv('IS_PRODUCTION', False)
-
-if isProduction == True:
-    extlinks = {'webroot': 
-        ('https://www.pixelshift.io/%s', '')}
-else:
-    extlinks = {'webroot': 
-        ('http://localhost:5000/%s', '')}
+docsWebroot = os.getenv('DOCS_WEBROOT', 'http://localhost:5000')
+fixedWebroot = docsWebroot if docsWebroot.endswith('/') else docsWebroot + '/'
+extlinks = {'webroot': (fixedWebroot + '%s', '')}
 
 
 # Add any paths that contain custom themes here, relative to this directory.
