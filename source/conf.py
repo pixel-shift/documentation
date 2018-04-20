@@ -32,7 +32,8 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.ifconfig',
-    'sphinx.ext.extlinks'
+    'sphinx.ext.extlinks',
+    'sphinx-jsonschema'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -50,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'pixelshift'
+project = 'pixelshift.io'
 copyright = '2018, pixelshift'
 author = 'pixelshift'
 
@@ -117,21 +118,22 @@ html_theme = 'sphinx_rtd_theme'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-# html_theme_options = {
-#     'canonical_url': 'foo.bar',
-#     'analytics_id': '',
-#     'logo_only': True,
-#     'display_version': True,
-#     'prev_next_buttons_location': 'bottom',
-#     'style_external_links': False,
-#     'vcs_pageview_mode': '',
-#     # Toc options
-#     'collapse_navigation': True,
-#     'sticky_navigation': True,
-#     'navigation_depth': 4,
-#     'includehidden': True,
-#     'titles_only': False
-# }
+html_theme_options = {
+    'analytics_id': '',
+    'logo_only': True,
+    'display_version': False,
+    #'prev_next_buttons_location': 'bottom',
+    #'style_external_links': False,
+    #'vcs_pageview_mode': '',
+    # Toc options
+    #'collapse_navigation': True,
+    #'sticky_navigation': True,
+    #'navigation_depth': 4,
+    #'includehidden': True,
+    #'titles_only': False
+}
+siteRoot = os.getenv('PIXELSHIFT_SITE_ROOT', 'http://localhost:5000')
+fixedWebroot = siteRoot if siteRoot.endswith('/') else siteRoot + '/'
 
 html_context = {
 "display_gitlab": True, # Add 'Edit on Github' link instead of 'View page source'
@@ -140,10 +142,10 @@ html_context = {
 "gitlab_user": "pixelshift",
 "gitlab_repo": "documentation",
 "theme_vcs_pageview_mode" : "blob",
-"conf_py_path" : "master/source/"
+"conf_py_path" : "master/source/",
+"site_root":fixedWebroot
 }
-docsWebroot = os.getenv('DOCS_WEBROOT', 'http://localhost:5000')
-fixedWebroot = docsWebroot if docsWebroot.endswith('/') else docsWebroot + '/'
+
 extlinks = {'webroot': (fixedWebroot + '%s', '')}
 
 
