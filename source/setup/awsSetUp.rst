@@ -24,7 +24,7 @@ An IAM User can be easily created via the AWS Console (Services/IAM/Users), as s
 7. Continue past the 'Set permissions for <username>' screen without selecting anything (permissions will be set shortly).
 8. On the 'Review' screen, ignore the permssions warning and click **Create User**.
 9. You should now see the 'Success' page showing your new IAM User, along with their *Access Key Id* and *Secret Access Key*.
-10. Copy and paste these new IAM keys in to your :webroot:`dashboard here <DashBoard/SetUp#iam-user>` or store them somewhere safe for later. **Important:** This is the only time you can view both keys (though you can re-generate the secret if you need to).
+10. Copy and paste these new IAM keys in to your :webroot:`dashboard here <DashBoard/Storage#iam-user>` or store them somewhere safe for later. **Important:** This is the only time you can view both keys (though you can re-generate the secret if you need to).
 11. After you have copied your keys, you can click **Close**. 
 
 Add Inline Policy
@@ -32,7 +32,7 @@ Add Inline Policy
 
 Once you have created an IAM User you must attach an inline policy to it. You can choose to grant access to individual storage buckets or all of them if you need to (though this isn't recommended). 
 
-1. First use your :webroot:`dashboard <DashBoard/SetUp#permissions>` to create a policy by selecting the type of access and providing bucket names if necessary.
+1. First use your :webroot:`dashboard <DashBoard/Storage#permissions>` to create a policy by selecting the type of access and providing bucket names if necessary.
 2. If necessary, sign in to your AWS Management Console and navigate to `Security, Identity & Compliance -> IAM -> Users`.
 3. Click on the IAM User you want to attach the policy to.
 4. On the 'Permissions' tab, select **Add inline policy** (bottom right)
