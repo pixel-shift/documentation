@@ -131,7 +131,7 @@ html_theme_options = {
     #'includehidden': True,
     #'titles_only': False
 }
-siteRoot = os.getenv('PIXELSHIFT_SITE_ROOT', 'http://localhost:5000')
+siteRoot = os.getenv('PIXELSHIFT_SITE_ROOT', 'https://www.pixelshift.io')
 fixedWebroot = siteRoot if siteRoot.endswith('/') else siteRoot + '/'
 
 html_context = {
