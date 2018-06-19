@@ -24,17 +24,7 @@ Tasks consist of ____ and an array of *Image Urls* and *Image Transforms* to be 
 
 A basic example is shown below:
 
-.. jsonschema::
 
-    {
-        "title": "Example Batch Process Task",
-        "id": "http://this.better.be.a.regular.domain",
-        "type": "object",
-
-        "properties":{
-            "name": { "type": "string"}
-        }
-    }
 
 batch processing requests can be sent to our API and your images will be uploaded, processed and downloaded 
 Currently, it can read from and write to Amazon Web Services storage buckets 
