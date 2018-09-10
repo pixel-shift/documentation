@@ -315,3 +315,7 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+# Based on this Stackoverflow suggestion: https://stackoverflow.com/a/41885884
+def setup(app):
+    app.add_javascript("https://www.googletagmanager.com/gtag/js?id=UA-111871191-3")
+    app.add_javascript("google_analytics.js")
