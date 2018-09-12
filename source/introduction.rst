@@ -7,25 +7,18 @@ About
 
 Pixelshift.io is a cloud-based service for processing large numbers of images at scale. It has been written from the ground up with this sole objective, and it is the most efficient and lowest-cost service of its type. Whether you need to process hundreds, or hundreds of thousands of images, our Microservice architecture running on Kubernetes rapidly adapts to handle any size of workload.   
 
-The service is accessed via a :webroot:`REST API <swagger/index.html>` and will require some software development expertise and set-up in order to get started. Images can only be fetched from and returned to Amazon S3 Storage Buckets currently, though support for Azure and Google Cloud Storage is under development.
+Supported operations include resizing, cropping, re-colouring and swapping file-types (for a full list refer to the :webroot:`API specification <swagger/index.html>`). The service is accessed via a :webroot:`REST API <swagger/index.html>` and will require some software development expertise and set-up in order to get started. Currently, images can only be fetched from and returned to Amazon S3 Storage Buckets, though support for Azure and Google Cloud Storage is under development.
 
 Overview
 ========
 
-Getting up and runnn
+The following list outlines the steps you will need to follow in order to start using the service. Click on any of the headings to be taken to a more detailed description.
 
-**1. Set Up**
-A one-time series of steps to generate your API keys and grant access to your storage locations.
+**1. Generate API Keys** for signing your requests. This is done via your Dashboard.
 
-**2. Authorize**
-Processing requests must be authorized by OAUTH
+**2. Grant access to your images** by setting up an IAM User and attaching an Inline Policy to it.
 
 **3. Create a Batch Process Task**
 Tasks consist of ____ and an array of *Image Urls* and *Image Transforms* to be performed.
 
 A basic example is shown below:
-
-
-
-batch processing requests can be sent to our API and your images will be uploaded, processed and downloaded 
-Currently, it can read from and write to Amazon Web Services storage buckets 
