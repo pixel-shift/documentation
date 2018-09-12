@@ -5,13 +5,15 @@ Overview
 About
 =====
 
-Pixelshift.io is a service optimised for processing large numbers of images at scale. It has been written from the ground up with this sole objective, and it is the fastest and lowest-cost service of its type.
+Pixelshift.io is a service optimised for processing large numbers of images at scale. It has been written from the ground up with this sole objective, and it is the most efficient and lowest-cost service of its type.
+
+ Whether you need to process hundreds, or hundreds of thousands of images, our Microservice architecture running on Kubernetes dynamically adjusts its scale up to handle any workload.
 
 
-Overview
-========
+Getting Up and Running
+======================
 
-There are only a few parts to this process:
+Getting up and runnn
 
 **1. Set Up**
 A one-time series of steps to generate your API keys and grant access to your storage locations.

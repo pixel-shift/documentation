@@ -5,12 +5,12 @@ AWS Set Up
 Overview
 ========
 
-In order for us to process images stored in AWS we need programmatic access to your storage bucket(s). This access is granted to a special IAM (Identity Access Management) User that must be created via the AWS dashboard or CLI. A policy is then attached to this IAM User that grants it permission to read and write from your buckets.
+Pixeshift needs programmatic access to the AWS Storage Bucket(s) where your images are stored. Firstly, you must create an IAM (Identity Access Management) User via the AWS dashboard (or CLI) and copy the access keys in to the :webroot:`Storage section of your Pixelshift Dashboard <Dashboard/Storage#iam-user>`. Then you grant access to this IAM user by attaching a Policy which gives it permission to read from and write to your buckets.
 
-All we then require are the access keys for the IAM user.
+The process is described in more detail below.
 
 
-Create a New IAM User
+Creating a New IAM User
 =======================
 
 An IAM User can be easily created via the AWS Console (Services/IAM/Users), as shown in this section. It is also possible to set up an IAM User via the AWS CLI, but this is not covered here - please refer to the `official documentation <https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html>`_ for details. 
@@ -27,14 +27,14 @@ An IAM User can be easily created via the AWS Console (Services/IAM/Users), as s
 10. Copy and paste these new IAM keys in to your :webroot:`dashboard here <DashBoard/Storage#iam-user>` or store them somewhere safe for later. **Important:** This is the only time you can view both keys (though you can re-generate the secret if you need to).
 11. After you have copied your keys, you can click **Close**. 
 
-Add Inline Policy
-=================
+Granting Access with an Inline Policy
+=====================================
 
-Once you have created an IAM User you must attach an inline policy to it. You can choose to grant access to individual storage buckets or all of them if you need to (though this isn't recommended). 
+Once you have created an IAM User, you must attach an Inline Policy to it that grants access to your Storage Bucket(s). You can choose to either grant access to individual Buckets or all of them (though this isn't recommended). 
 
-1. First use your :webroot:`dashboard <DashBoard/Storage#permissions>` to create a policy by selecting the type of access and providing bucket names if necessary.
-2. If necessary, sign in to your AWS Management Console and navigate to `Security, Identity & Compliance -> IAM -> Users`.
-3. Click on the IAM User you want to attach the policy to.
+1. First use your :webroot:`Pixelshift Dashboard <DashBoard/Storage#permissions>` to create a policy. Select the type of access and provide Bucket names if necessary.
+2. Sign in to your AWS Management Console and navigate to `Security, Identity & Compliance -> IAM -> Users`.
+3. Select the IAM User you want to attach the policy to.
 4. On the 'Permissions' tab, select **Add inline policy** (bottom right)
 5. On the 'Create policy' screen, select the **JSON** tab.
 6. Copy the entire policy created in Step 1 into the editor.
