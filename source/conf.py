@@ -135,11 +135,11 @@ siteRoot = os.getenv('PIXELSHIFT_SITE_ROOT', 'https://www.pixelshift.io')
 fixedWebroot = siteRoot if siteRoot.endswith('/') else siteRoot + '/'
 
 html_context = {
-"display_gitlab": True, # Add 'Edit on Github' link instead of 'View page source'
+"display_github": True, # Add 'Edit on Github' link instead of 'View page source'
 "last_updated": False,
 "commit": False,
-"gitlab_user": "pixelshift",
-"gitlab_repo": "documentation",
+"github_user": "pixel-shift",
+"github_repo": "documentation",
 "theme_vcs_pageview_mode" : "blob",
 "conf_py_path" : "master/source/",
 "site_root":fixedWebroot
