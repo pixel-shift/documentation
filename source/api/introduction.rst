@@ -10,7 +10,8 @@ The first step is to obtain a valid *Bearer Token* using your API Keys as descri
 Getting Authorized
 ==================
 
-Access to the Pixelshift API is secured via Oauth Bearer Tokens, and all requests require a valid Token to be attached. The steps to accquire a Bearer Token are outlined below.
+
+Access to the Pixelshift API is secured via OAuth 2.0 authorization using the `Client Credentials grant type <https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/>`_. All requests to the API must include a valid access-token. The steps to accquire this token are outlined below.
 
 **1. Generate API Public/Private Key Pair**
 
@@ -18,9 +19,16 @@ Visit your :webroot:`Pixelshift Dashboard <Dashboard/ApiAccess>` and hit 'Genera
 
 ----
 
-**2. Accquire an OAuth Bearer Token**
+**2. Accquire an OAuth 2.0 Access Token**
 
-Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of `{ grant_type : "client_credentials"}` and your API Keys Base64 Encoded in the Authorization Header. For example, using Node.js this would look like:
+Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of
+
+
+.. code-block:: javascript
+
+   { grant_type : "client_credentials"} 
+   
+and your API Keys Base64 Encoded in the Authorization Header. For example, using Node.js this would look like:
 
 .. code-block:: javascript
     :linenos:
@@ -61,7 +69,7 @@ Using your technology of choice, make a POST to http://www.pixelshift.io/connect
 Initializing an API Client
 ==========================
 
-The details of this step depend on your chosen language and implementation. As an example, the Pixelshift node.js client is intiazlied as follows (using the token obtained from the previous step):
+The details of this step depend on your chosen language and implementation. As an example, the Pixelshift Node.js client is initialized as follows (using the token obtained from the previous step):
 
 .. code-block:: javascript
     :linenos:
@@ -142,6 +150,6 @@ Submitting a Batch
     console.log(JSON.stringify(apiResponse, null, 2));
 
 
-**Please Note:** Line 5 in the above code is only required for Node.js clients.
+**Please Note:** Line 5 in the above code is only required for Node.js clients (see our `example in github <https://github.com/pixel-shift/node-js-client/blob/master/client/index.js>`_ for the implementation of :code:`addTypeDiscriminatorsToBatch`).
 
-The response will indicate success or, if unsuccessful, the reason that the submission has failed.
+The response will indicate success or, if a non-2xx HTTP status is returned, the reason that the submission has failed. See :code:`BatchStartReportResponse` in our :webroot:`swagger documentation <swagger/index.html#model-BatchStartReportResponse>`.
