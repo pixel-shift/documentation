@@ -31,7 +31,7 @@ Using your technology of choice, make a POST to http://www.pixelshift.io/connect
     const clientId = "XXXXXXXXX";
     const clientSecret = "XXXXXXXXXXX";;
     const credentials = Buffer.from(clientId + ':' + clientSecret).toString('base64');
-    ​
+    
     var options = {
         hostname: 'www.pixelshift.io',
         path: '/connect/token',
@@ -42,7 +42,7 @@ Using your technology of choice, make a POST to http://www.pixelshift.io/connect
             'Authorization' : 'Basic ' + credentials
         }
     };
-    ​
+    
     const req = https.request(options, (res) => {
         let data = '';
         res.on('data', d => {
