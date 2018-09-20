@@ -74,7 +74,28 @@ The details of this step depend on your chosen language and implementation. As a
 Defining Processing Tasks
 =========================
 
+
+
+.. figure:: images/SimpleTransformGraph.png
+   :scale: 100 %
+   :alt: diagram of a simple TransformGraph
+
+   A simple TransformGraph.
+
+.. figure:: images/ComplexTransformGraph.png
+   :scale: 100 %
+   :alt: diagram of a branching TransformGraph
+
+   A branching TransformGraph.
+
+.. figure:: images/ComplexTransformGraphFlow.png
+   :scale: 100 %
+   :alt: data flow in a branching TransformGraph
+
+   Data flow in a branching TransformGraph.
+
 The core building blocks of processing tasks are abstract entities called *Transform Units*. Chains of *Transform Units* are assembled into *Transform Graphs* that define the sources, operations and destinations for images.
+
 
 *Transform Graphs* consist of one or more *Transform Units* and zero or more *Output Transform Graphs*, which are used to connect them together.
 
