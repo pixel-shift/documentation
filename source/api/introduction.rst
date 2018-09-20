@@ -21,14 +21,7 @@ Visit your :webroot:`Pixelshift Dashboard <Dashboard/ApiAccess>` and hit 'Genera
 
 **2. Accquire an OAuth 2.0 Access Token**
 
-Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of
-
-
-.. code-block:: javascript
-
-   { grant_type : "client_credentials"} 
-   
-and your API Keys Base64 Encoded in the Authorization Header. For example, using Node.js this would look like:
+Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of :code:`{ grant_type : "client_credentials"}` and your API Keys Base64 Encoded in the Authorization Header. For example, using Node.js this would look like:
 
 .. code-block:: javascript
     :linenos:
@@ -78,23 +71,28 @@ The details of this step depend on your chosen language and implementation. As a
     const api = new PixelshiftApi(creds, "https://www.pixelshift.io");
 
 
-Creating Transform Graphs
+Defining Processing Tasks
 =========================
 
-Each processing task within a *Batch* is described as a *Transform Graph*. To be valid, each *Transform Graph* must consist of the following components:
+The core building blocks of processing tasks are abstract entities called *Transform Units*. Chains of *Transform Units* are assembled into *Transform Graphs* that define the sources, operations and destinations for images.
 
-**1. A single StorageSource**, giving the location of the original image to be processed
+*Transform Graphs* consist of one or more *Transform Units* and zero or more *Output Transform Graphs*, which are used to connect them together.
 
-**2. One or more Transforms**, describing the processing tasks to be performed
+*Transform Graphs* can be used as single stand-alone entities for simple 1-1 operations (e.g. resize an image and store it), or they may be nested into more complex structures where more than one output file can be produced for each input. 
 
-**3. One or more StorageSinks** giving the location(s) where the results of the processing tasks should be stored
+To be valid, each chain of *Transform Units* resulting from a simple or nested *Transform Graph* must:
 
-Other requirements are as follows:
+**1. Begin with a single StorageSource**, giving the location of the original image to be processed
 
-* Every *StorageSink* must be preceeded by a single *ImageFormat* node that defines the file format for the final result (e.g. jpeg or png)
-* The number of *StorageSinks* per *Transform Graph* is limited to 5 
+**2. Contain one or more Operations**, describing the processing tasks to be performed
 
-The sample below shows how to use the the Pixelshift Node.js API Client to build a simple *Transform Graph* to resize an image:
+**3. End with an *ImageFormat* and a StorageSink node** that define the file type and location for the result.
+
+
+Simple 1-1 Transform Graph
+--------------------------
+
+The sample below shows how to use the the Pixelshift Node.js API Client to build a simple *Transform Graph* to fetch and image, resize it and then store it:
 
 .. code-block:: javascript
     :linenos:
@@ -122,6 +120,9 @@ The sample below shows how to use the the Pixelshift Node.js API Client to build
     //build transform graph
     const graph = new PixelshiftApiModels.TransformGraph();
     graph.transforms = [storageSource, resize, jpeg, storageSink];
+
+
+
 
 
 Submitting a Batch
