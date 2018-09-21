@@ -16,12 +16,12 @@ How to use Pixelshift
 
 Below is a summary of steps required in order to start using the service. Click on any of the headings to be taken to a more detailed description.
 
-**1.** :webroot:`Generate API Keys <documentation/api/introduction.html#authorization>` for signing your requests. This is done via your Dashboard.
+**1.** :webroot:`Generate API Keys <documentation/api/introduction.html#authorization>` for signing your requests. This is done via your :webroot:`Dashboard <Dashboard/ApiAccess>`.
 
-**2. Grant access to your images** in AWS Storage by setting up an IAM User and attaching an Inline Policy to it.
+**2.** :webroot:`Grant access to your images in AWS Storage <documentation/setup/awsSetUp.html>` by setting up an IAM User and attaching an Inline Policy to it.
 
-**3. Set up your API Client code** by cloning one of our repositories or, if you prefer, generating one with `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>` or writing your own.
+**3.** :webroot:`Create an API Client <documentation/api/introduction.html#creating-an-api-client>` by cloning one of our repositories or, if you prefer, generating one with `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>` or writing your own.
 
-**4. Construct a Batch** from your desired Operations.
+**4.** :webroot:`Define your Processing Tasks <documentation/api/introduction.html#defining-processing-tasks>` as *Transform Graphs*
 
-**5. Submit your batch** via your API Client.
+**5.** :webroot:`Submit a Batch <documentation/api/introduction.html#submitting-a-batch>` of Processing Tasks via your API Client.
