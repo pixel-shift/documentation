@@ -5,23 +5,27 @@ API Access
 Overview
 ========
 
-The first step is to obtain a valid *Bearer Token* using your API Keys as described below. The token that you receive is then used by one of our API Clients (or your own) in order to send *Batches* of image processing tasks to the API. Each *Batch* consists of a collection of *Transform Graphs*, and each  *Transform Graph* describes the source, operations and destination(s) for an image processing task. 
+The first step is to obtain a valid *access token* using your API Keys as described below. The token that you receive is then used by one of our API Clients (or your own) in order to send *Batches* of image processing tasks to the API. Each *Batch* consists of a collection of *Transform Graphs*, and each  *Transform Graph* describes the source, operations and destination(s) for an image processing task. 
 
 Getting Authorized
 ==================
 
 
-Access to the Pixelshift API is secured via OAuth 2.0 authorization using the `Client Credentials grant type <https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/>`_. All requests to the API must include a valid access-token. The steps to accquire this token are outlined below.
+Access to the Pixelshift API is secured via OAuth 2.0 authorization using the `Client Credentials grant type <https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/>`_. All requests to the API must include a valid access token. The steps to accquire this token are outlined below.
 
 **1. Generate API Public/Private Key Pair**
 
-Visit your :webroot:`Pixelshift Dashboard <Dashboard/ApiAccess>` and hit 'Generate New Api Key'. Store both keys somewhere safe (please note that the Private Key is only available when a new key is generated though a new Private Key can be generated at any time).
+Visit your :webroot:`Pixelshift Dashboard <Dashboard/ApiAccess>` and hit 'Generate New Api Key'. This is the *only* time the secret key will be shown to you, so make sure you store both keys somewhere safe. Please note that as the secret key is only available when a new key is generated, if you lose it you will need to generate a new secret key or generate an entirely new public/secret key pair.
 
 ----
 
 **2. Accquire an OAuth 2.0 Access Token**
 
-Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of :code:`{ grant_type : "client_credentials"}` and your API Keys Base64 Encoded in the Authorization Header. For example, using Node.js this would look like:
+Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of :code:`{ grant_type : "client_credentials"}` and your API public/secret key pair base64 encoded in the Authorization Header. 
+
+The public/secret key pair should be joined, separated by a :code:`:` prior to base64 encoding. For instance, with a public key of :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7` and a secret key of :code:`4e8e316c5bcc` , the string to be base64 encoded would be :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7:4e8e316c5bcc`
+
+For example, using Node.js this would look like:
 
 .. code-block:: javascript
     :linenos:
@@ -67,7 +71,7 @@ The details of this step depend on your chosen language and implementation.
 If you are using C#, Node.js or Java the quickest route to an API Client is to clone one of `our repositories <https://github.com/pixel-shift>`_. If you are using Python, Ruby or Typescript, you can generate a client automatically using `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>`.
 
 .. important::
-    Although autorest can generate clients in **Node.js**, it requires a workaround. If you're using Node, clone from our `Node.js Client repo <https://github.com/pixel-shift/node-js-client>`_ instead of rolling your own.
+    Although autorest can generate clients in **Node.js**, it requires a workaround. If you're using Node, clone from our `Node.js Client repo <https://github.com/pixel-shift/node-js-client>`_ instead of rolling your own. To simplify this process, we will soon be releasing NPM packages.
 
 Once you have a client, it needs to be initialized with the OAuth token accquired in the previous step. As an example, the Node.js client is initialized as follows:
 
