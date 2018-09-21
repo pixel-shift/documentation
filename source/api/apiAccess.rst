@@ -209,13 +209,13 @@ Pixelshift supports all the usual image manipulations such as resizing, colourin
 Throttling
 ==========
 
-A Throttle setting is provided in your :webroot:`Dashboard <dashboard/apiaccess#throttling` to prevent accidental submission of more processing tasks than you intend. Use the controls to set a limit on your API access in order to reduce the impact of accidents, should they occur. Initially this is set to 1000 transforms per hour, though it can be changed whenever and as often as you wish.
+A Throttle setting is provided in your :webroot:`Dashboard <dashboard/apiaccess#throttling>` to prevent accidental submission of more processing tasks than you intend. Use the controls to set a limit on your API access in order to reduce the impact of accidents, should they occur. Initially this is set to 1000 transforms per hour, though it can be changed whenever and as often as you wish.
 
 Limits
 ======
 
 The following limits apply to Batches submitted to the API:
 
-* Maximum Batch size: 1000
-* Maximum *StorageSinks* per *Transform Graph*: 5
-* Maximum source image file size: 800MB
+* Maximum Batch size: **1000**
+* Maximum *StorageSinks* per *Transform Graph*: **5**
+* Maximum source image file size: **800MB**
