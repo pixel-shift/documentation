@@ -59,10 +59,17 @@ Using your technology of choice, make a POST to http://www.pixelshift.io/connect
 
 
 
-Initializing an API Client
-==========================
+Creating an API Client
+======================
 
-The details of this step depend on your chosen language and implementation. As an example, the Pixelshift Node.js client is initialized as follows (using the token obtained from the previous step):
+The details of this step depend on your chosen language and implementation. 
+
+If you are using C#, Node.js or Java the quickest route to an API Client is to clone one of `our repositories <https://github.com/pixel-shift>`_. If you are using Python, Ruby or Typescript, you can generate a client automatically using `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>`.
+
+.. important::
+    Although autorest can generate clients in **Node.js**, it requires a workaround. If you're using Node, clone from our `Node.js Client repo <https://github.com/pixel-shift/node-js-client>`_ instead of rolling your own.
+
+Once you have a client, it needs to be initialized with the OAuth token accquired in the previous step. As an example, the Node.js client is initialized as follows:
 
 .. code-block:: javascript
     :linenos:
@@ -76,17 +83,7 @@ Defining Processing Tasks
 
 
 
-.. figure:: images/SimpleTransformGraph.png
-   :scale: 100 %
-   :alt: diagram of a simple TransformGraph
 
-   A simple TransformGraph.
-
-.. figure:: images/ComplexTransformGraph.png
-   :scale: 100 %
-   :alt: diagram of a branching TransformGraph
-
-   A branching TransformGraph.
 
 .. figure:: images/ComplexTransformGraphFlow.png
    :scale: 100 %
@@ -94,20 +91,37 @@ Defining Processing Tasks
 
    Data flow in a branching TransformGraph.
 
-The core building blocks of processing tasks are abstract entities called *Transform Units*. Chains of *Transform Units* are assembled into *Transform Graphs* that define the sources, operations and destinations for images.
+The core building blocks of processing tasks are abstract entities known as *Transform Units*. Sources, Sinks and Operations such as resizing and cropping are all *Transform Units*. Chains of *Transform Units* are assembled into *Transform Graphs* in order to define processing tasks.
 
+A *Transform Graph* consists of one or more *Transform Units* and zero or more *Output Transform Graphs*, which are themselves *Transform Graphs*.
 
-*Transform Graphs* consist of one or more *Transform Units* and zero or more *Output Transform Graphs*, which are used to connect them together.
+.. figure:: images/SimpleTransformGraph.png
+   :scale: 70 %
+   :alt: diagram of a simple TransformGraph
 
-*Transform Graphs* can be used as single stand-alone entities for simple 1-1 operations (e.g. resize an image and store it), or they may be nested into more complex structures where more than one output file can be produced for each input. 
+   A simple TransformGraph.
 
-To be valid, each chain of *Transform Units* resulting from a simple or nested *Transform Graph* must:
+The diagram above shows a simple standalone *Transform Graph* consisting of 4 *Transform Units* and no *Outputs*, which will fetch an image from S3 Storage, resize it and then store it as a jpeg in S3 Storage. For any set of operations with a single output file, a standalone *Transform Graph* is sufficient, though it could also be represented as multiple nested *Transform Graphs*, each containing one or more of the *Transform Units*. 
+
+There are no restrictions on how *Transform Graphs* are assembeld, but in order to be valid, each chain of *Transform Units* that results must:
 
 **1. Begin with a single StorageSource**, giving the location of the original image to be processed
 
 **2. Contain one or more Operations**, describing the processing tasks to be performed
 
 **3. End with an *ImageFormat* and a StorageSink node** that define the file type and location for the result.
+
+
+A more complex operation, such as resizing a single image multiple times, is achieved by nesting *Transform Graphs*:
+
+.. figure:: images/ComplexTransformGraph.png
+   :scale: 70 %
+   :alt: diagram of a branching TransformGraph
+
+   A branching TransformGraph.
+
+
+
 
 
 Simple 1-1 Transform Graph
