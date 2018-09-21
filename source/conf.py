@@ -319,3 +319,4 @@ texinfo_documents = [
 def setup(app):
     app.add_javascript("//www.googletagmanager.com/gtag/js?id=UA-111871191-4")
     app.add_javascript("google_analytics.js")
+    app.add_stylesheet("pixel-shift.css")

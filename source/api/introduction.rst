@@ -81,11 +81,15 @@ Once you have a client, it needs to be initialized with the OAuth token accquire
 Defining Processing Tasks 
 ===============================================
 
+Transform Units and Transform Graphs
+------------------------------------
+
 The core building blocks of processing tasks are abstract entities called *Transform Units*. Sources, Sinks and Operations such as resizing and cropping are all *Transform Units*. Processing tasks are described by chains of *Transform Units* that have been assembled into *Transform Graphs*.
 
 *Transform Graphs* consist of one or more *Transform Units* and zero or more *Output Transform Graphs* (which are themselves *Transform Graphs*).
 
-**1. Simple Transform Graphs**
+Simple Transform Graphs
+--------------------------
 
 .. figure:: images/SimpleTransformGraph.png
    :scale: 70 %
@@ -96,7 +100,8 @@ The core building blocks of processing tasks are abstract entities called *Trans
 The diagram above shows a simple standalone *Transform Graph* consisting of 4 *Transform Units* and no *Outputs*. This *Transform Graph* will fetch an image from S3 Storage, resize it once and then store it as a new jpeg in S3 Storage. For any set of operations with a single output file, a standalone *Transform Graph* is sufficient. 
 
 
-**2. Branching Transform Graphs** 
+Branching Transform Graphs
+---------------------------------
 
 A more complex operation, such as resizing a single image multiple times, or storing a resized image as multiple formats, requires nested, or branching *Transform Graphs*:
 
@@ -114,7 +119,8 @@ The above is equivalent to the following:
 
    Data flow in a branching TransformGraph.
 
-**3. Valid Transform Graphs**
+Valid Transform Graphs
+-------------------------
 
 There are no restrictions on how *Transform Graphs* are assembled, but in order to be valid, each chain of *Transform Units* that results must:
 
@@ -124,8 +130,8 @@ There are no restrictions on how *Transform Graphs* are assembled, but in order 
 
 **3. End with an ImageFormat and a StorageSink node** that define the file type and location for the result.
 
-Simple 1-1 Transform Graph
---------------------------
+Simple Example
+----------------
 
 The sample below shows how to use the the Pixelshift Node.js API Client to build a simple *Transform Graph* to fetch and image, resize it and then store it:
 
