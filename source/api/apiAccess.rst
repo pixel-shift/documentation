@@ -25,7 +25,7 @@ Using your technology of choice, make a POST to http://www.pixelshift.io/connect
 
 The public/secret key pair should be joined, separated by a :code:`:` prior to base64 encoding. For instance, with a public key of :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7` and a secret key of :code:`4e8e316c5bcc` , the string to be base64 encoded would be :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7:4e8e316c5bcc`
 
-For example, using Node.js this would look like:
+For example, using Node.js this would look something like:
 
 .. code-block:: javascript
     :linenos:
@@ -173,7 +173,7 @@ The sample below shows how to use the the Pixelshift Node.js API Client to build
 Submitting a Batch
 ==================
 
-*Transform Graphs* are attached to a *Batch*, which is then submitted for processing. Using Node.js again as an example, this is achieved as follows:
+*Transform Graphs* are added to a *Batch*, which is then submitted for processing. Using Node.js again as an example, the simple graph assembled in the previous section would be added and submitted as shown below:
 
 .. code-block:: javascript
     :linenos:
