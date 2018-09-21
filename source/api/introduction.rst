@@ -78,22 +78,14 @@ Once you have a client, it needs to be initialized with the OAuth token accquire
     const api = new PixelshiftApi(creds, "https://www.pixelshift.io");
 
 
-Defining Processing Tasks
-=========================
+Defining Processing Tasks 
+===============================================
 
+The core building blocks of processing tasks are abstract entities called *Transform Units*. Sources, Sinks and Operations such as resizing and cropping are all *Transform Units*. Processing tasks are described by chains of *Transform Units* that have been assembled into *Transform Graphs*.
 
+*Transform Graphs* consist of one or more *Transform Units* and zero or more *Output Transform Graphs* (which are themselves *Transform Graphs*).
 
-
-
-.. figure:: images/ComplexTransformGraphFlow.png
-   :scale: 100 %
-   :alt: data flow in a branching TransformGraph
-
-   Data flow in a branching TransformGraph.
-
-The core building blocks of processing tasks are abstract entities known as *Transform Units*. Sources, Sinks and Operations such as resizing and cropping are all *Transform Units*. Chains of *Transform Units* are assembled into *Transform Graphs* in order to define processing tasks.
-
-A *Transform Graph* consists of one or more *Transform Units* and zero or more *Output Transform Graphs*, which are themselves *Transform Graphs*.
+**1. Simple Transform Graphs**
 
 .. figure:: images/SimpleTransformGraph.png
    :scale: 70 %
@@ -101,28 +93,36 @@ A *Transform Graph* consists of one or more *Transform Units* and zero or more *
 
    A simple TransformGraph.
 
-The diagram above shows a simple standalone *Transform Graph* consisting of 4 *Transform Units* and no *Outputs*, which will fetch an image from S3 Storage, resize it and then store it as a jpeg in S3 Storage. For any set of operations with a single output file, a standalone *Transform Graph* is sufficient, though it could also be represented as multiple nested *Transform Graphs*, each containing one or more of the *Transform Units*. 
+The diagram above shows a simple standalone *Transform Graph* consisting of 4 *Transform Units* and no *Outputs*. This *Transform Graph* will fetch an image from S3 Storage, resize it once and then store it as a new jpeg in S3 Storage. For any set of operations with a single output file, a standalone *Transform Graph* is sufficient. 
 
-There are no restrictions on how *Transform Graphs* are assembeld, but in order to be valid, each chain of *Transform Units* that results must:
+
+**2. Branching Transform Graphs** 
+
+A more complex operation, such as resizing a single image multiple times, or storing a resized image as multiple formats, requires nested, or branching *Transform Graphs*:
+
+.. figure:: images/ComplexTransformGraph.png
+   :scale: 60 %
+   :alt: diagram of a branching TransformGraph
+
+   A branching TransformGraph.
+
+The above is equivalent to the following:
+
+.. figure:: images/ComplexTransformGraphFlow.png
+   :scale: 70 %
+   :alt: data flow in a branching TransformGraph
+
+   Data flow in a branching TransformGraph.
+
+**3. Valid Transform Graphs**
+
+There are no restrictions on how *Transform Graphs* are assembled, but in order to be valid, each chain of *Transform Units* that results must:
 
 **1. Begin with a single StorageSource**, giving the location of the original image to be processed
 
 **2. Contain one or more Operations**, describing the processing tasks to be performed
 
-**3. End with an *ImageFormat* and a StorageSink node** that define the file type and location for the result.
-
-
-A more complex operation, such as resizing a single image multiple times, is achieved by nesting *Transform Graphs*:
-
-.. figure:: images/ComplexTransformGraph.png
-   :scale: 70 %
-   :alt: diagram of a branching TransformGraph
-
-   A branching TransformGraph.
-
-
-
-
+**3. End with an ImageFormat and a StorageSink node** that define the file type and location for the result.
 
 Simple 1-1 Transform Graph
 --------------------------
