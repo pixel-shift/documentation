@@ -68,7 +68,7 @@ Creating an API Client
 
 The details of this step depend on your chosen language and implementation. 
 
-If you are using C#, Node.js or Java the quickest route to an API Client is to clone one of `our repositories <https://github.com/pixel-shift>`_. If you are using Python, Ruby or Typescript, you can generate a client automatically using `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>`.
+If you are using C#, Node.js or Java the fastest route to an API Client is to clone one of `our repositories <https://github.com/pixel-shift>`_. If, on the other hand, you are using Go, PHP, Python, Ruby or Typescript, you can generate a client automagically using `autorest <https://github.com/Azure/autorest>`_ against our :webroot:`Swagger/OpenAPI document <swagger/v1/swagger.json>`.
 
 .. important::
     Although autorest can generate clients in **Node.js**, it requires a workaround. If you're using Node, clone from our `Node.js Client repo <https://github.com/pixel-shift/node-js-client>`_ instead of rolling your own. To simplify this process, we will soon be releasing NPM packages.
