@@ -8,5 +8,5 @@ Contents
    :maxdepth: 3
    
    introduction
-   api/introduction
-   setup/awsSetUp
+   api/apiAccess
+   storage/awsSetUp

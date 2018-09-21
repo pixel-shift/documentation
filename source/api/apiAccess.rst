@@ -195,3 +195,23 @@ Submitting a Batch
 **Please Note:** Line 5 in the above code is only required for Node.js clients (see our `example in github <https://github.com/pixel-shift/node-js-client/blob/master/client/index.js>`_ for the implementation of :code:`addTypeDiscriminatorsToBatch`).
 
 The response will indicate success or, if a non-2xx HTTP status is returned, the reason that the submission has failed. See :code:`BatchStartReportResponse` in our :webroot:`swagger documentation <swagger/index.html#model-BatchStartReportResponse>`.
+
+Supported Operations
+====================
+
+Pixelshift supports all the usual image manipulations such as resizing, colouring, cropping and even auto-cropping. Please refer to the *Models* section of the :webroot:`swagger info page <swagger/index.html>` for the full list, including detailed descriptions for each.
+
+
+Throttling
+==========
+
+A Throttle setting is provided in your :webroot:`Dashboard <dashboard/apiaccess#throttling` to prevent accidental submission of more processing tasks than you intend. Use the controls to set a limit on your API access in order to reduce the impact of accidents, should they occur. Initially this is set to 1000 transforms per hour, though it can be changed whenever and as often as you wish.
+
+Limits
+======
+
+The following limits apply to Batches submitted to the API:
+
+* Maximum Batch size: 1000
+* Maximum *StorageSinks* per *Transform Graph*: 5
+* Maximum source image file size: 800MB
