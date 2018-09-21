@@ -21,7 +21,7 @@ Visit your :webroot:`Pixelshift Dashboard <Dashboard/ApiAccess>` and hit 'Genera
 
 **2. Accquire an OAuth 2.0 Access Token**
 
-Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of :code:`{ grant_type : "client_credentials"}` and your API public/secret key pair base64 encoded in the Authorization Header. 
+Using your technology of choice, make a POST to http://www.pixelshift.io/connect/token with a POST body of :code:`grant_type=client_credentials` sent with a content-type of :code:`application/x-www-form-urlencoded` and your API public/secret key pair base64 encoded in the Authorization Header. 
 
 The public/secret key pair should be joined, separated by a :code:`:` prior to base64 encoding. For instance, with a public key of :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7` and a secret key of :code:`4e8e316c5bcc` , the string to be base64 encoded would be :code:`fb160b4b-40bd-406e-bd43-260d3d6181c7:4e8e316c5bcc`
 
