@@ -85,6 +85,8 @@ Once you have a client, it needs to be initialized with the OAuth token accquire
 Defining Processing Tasks 
 ===============================================
 
+You can submit authorized JSON requests directly to the API if you wish (:webroot:`see here for an example <swagger/index.html#/BatchProcessing/ProcessImageBatch>`), though we recommend using one of our :webroot:`auto-generated clients <documentation/api/apiAccess.html#creating-an-api-client>` and the *Transform Graph* models that come with it. See below for details.
+
 Transform Units and Transform Graphs
 ------------------------------------
 
@@ -137,15 +139,14 @@ There are no restrictions on how *Transform Graphs* are assembled, but in order 
 Simple Example
 ----------------
 
-The sample below shows how to use the the Pixelshift Node.js API Client to build a simple *Transform Graph* to fetch and image, resize it and then store it:
+The sample below shows how to use the the Pixelshift Node.js API Client to build a simple *Transform Graph* to fetch an image, resize it and then store it:
 
 .. code-block:: javascript
     :linenos:
 
     //create StorageSource
-    const storageSource = new PixelshiftApiModels.StorageSourceS3();
-    storageSource.sourceBucket = "mysourcebucket";
-    storageSource.sourceKey = "source-image.jpg";
+    const storageSource = new PixelshiftApiModels.StorageSourceRawHttpGet();
+    storageSource.uri = "<uri of any publicly GETable image>";
 
     //create an ImageResizeMax transform node
     const resize = new PixelshiftApiModels.ImageResizeMax();
@@ -216,6 +217,6 @@ Limits
 
 The following limits apply to Batches submitted to the API:
 
-* Maximum Batch size: **1000**
+* Maximum Batch size: **1000** (though multiple batches can be submitted concurrently)
 * Maximum *StorageSinks* per *Transform Graph*: **5**
 * Maximum source image file size: **800MB**

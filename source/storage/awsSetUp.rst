@@ -1,13 +1,17 @@
-==========
-AWS Set Up
-==========
+==========================
+Setting Up an AWS IAM User
+==========================
 
 Overview
 ========
 
-Pixeshift needs programmatic access to the AWS Storage Bucket(s) where your images are stored. Firstly, you must create an IAM (Identity Access Management) User via the AWS dashboard (or CLI) and copy the access keys in to the :webroot:`Storage section of your Pixelshift Dashboard <Dashboard/Storage#iam-user>`. Then you grant access to this IAM user by attaching a Policy which gives it permission to read from and write to your buckets.
+If you are using Amazon S3 Storage, there are two methods that can be used to grant access to your images:
 
-The process is described in more detail below.
+**1. Create Pre-signed URLs** that can be used to access your strorage directly (see the `Amazon S3 documentation <//docs.aws.amazon.com/AmazonS3/latest/dev/ObjectOperations.html>`_ for details). Once you are know how to generate pre-signed URLs, this method is the most straightforward and requires no additional set-up.
+
+**2. Create an IAM User** to grant programmatic access to your images. Firstly, you must create an IAM (Identity Access Management) User via the AWS dashboard (or CLI) and copy the access keys in to the :webroot:`Storage section of your Pixelshift Dashboard <Dashboard/Storage#iam-user>`. Then you grant access to this IAM user by attaching a Policy which gives it permission to read from and write to your buckets.
+
+The process of creating and an IAM User is described in detail below.
 
 
 Creating a New IAM User
